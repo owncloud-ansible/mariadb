@@ -2,6 +2,8 @@
 
 [![Build Status](https://drone.owncloud.com/api/badges/owncloud-ansible/mariadb/status.svg)](https://drone.owncloud.com/owncloud-ansible/mariadb)
 
+> **WARNING**: This Ansible role is currently in beta state. Use it at your own risk.
+
 
 Ansible role to setup MariaDB server
 
@@ -51,6 +53,14 @@ Ansible role to setup MariaDB server
   * [mariadb_config_include_files](#mariadb_config_include_files)
   * [mariadb_databases](#mariadb_databases)
   * [mariadb_users](#mariadb_users)
+  * [mariadb_config_include_dir](#mariadb_config_include_dir)
+  * [mariadb_config_file](#mariadb_config_file)
+  * [mariadb_packages](#mariadb_packages)
+  * [mariadb_datadir](#mariadb_datadir)
+  * [mysql_pid_file](#mysql_pid_file)
+  * [mysql_socket](#mysql_socket)
+  * [mariadb_log_file_group](#mariadb_log_file_group)
+  * [mariadb_log_error](#mariadb_log_error)
 * [Dependencies](#dependencies)
 * [License](#license)
 * [Author](#author)
@@ -77,6 +87,8 @@ mariadb_enabled_on_startup: true
 
 ### overwrite_global_mycnf
 
+Whether my.cnf should be updated on every run.
+
 #### Default value
 
 ```YAML
@@ -85,6 +97,8 @@ overwrite_global_mycnf: true
 
 ### mariadb_transaction_isolation_level
 
+Set transaction isolation level. Possible values: `READ-UNCOMMITTED|READ-COMMITTED|REPEATABLE-READ|SERIALIZABLE`
+
 #### Default value
 
 ```YAML
@@ -92,6 +106,8 @@ mariadb_transaction_isolation_level: READ-COMMITTED
 ```
 
 ### mariadb_packages_extra
+
+List of extra packages to install e.g. a set of custom dependencies.
 
 #### Default value
 
@@ -125,10 +141,12 @@ mariadb_skip_name_resolve: false
 
 ### mariadb_sql_mode
 
+MariaDB supports several different modes. You can pass a list of options to to suit your needs.
+
 #### Default value
 
 ```YAML
-mariadb_sql_mode: ''
+mariadb_sql_mode: []
 ```
 
 ### mariadb_key_buffer_size
@@ -288,7 +306,7 @@ mariadb_event_scheduler_state: OFF
 #### Default value
 
 ```YAML
-mariadb_innodb_file_per_table: '1'
+mariadb_innodb_file_per_table: ON
 ```
 
 ### mariadb_innodb_buffer_pool_size
@@ -387,6 +405,15 @@ mariadb_mysqldump_max_allowed_packet: 64M
 mariadb_config_include_files: []
 ```
 
+#### Example usage
+
+```YAML
+mariadb_config_include_files:
+  - src: path/relative/to/playbook/file.cnf
+  - src: path/relative/to/playbook/anotherfile.cnf
+    force: yes
+```
+
 ### mariadb_databases
 
 #### Default value
@@ -394,8 +421,8 @@ mariadb_config_include_files: []
 ```YAML
 mariadb_databases:
   - name: owncloud
-    collation: utf8_general_ci
-    encoding: utf8
+    collation: utf8mb4_bin
+    encoding: utf8mb4
 ```
 
 ### mariadb_users
@@ -408,6 +435,75 @@ mariadb_users:
     host: localhost
     password: owncloud
     priv: owncloud.*:ALL
+```
+
+### mariadb_config_include_dir
+
+Include dir for custom MariaDB config files. The default value depends on the operatig system.
+
+#### Example usage
+
+```YAML
+mariadb_config_include_dir: /etc/mysql/conf.d
+```
+
+### mariadb_config_file
+
+#### Example usage
+
+```YAML
+mariadb_config_file: /etc/mysql/mariadb.cnf
+```
+
+### mariadb_packages
+
+Define a custom list of packages to install. Default value depends on your operating system.
+
+#### Example usage
+
+```YAML
+mariadb_packages:
+  - mariadb
+  - mariadb-server
+  - MySQL-python
+```
+
+### mariadb_datadir
+
+MariaDB data directory to use. Default value depends on your operating system.
+
+#### Example usage
+
+```YAML
+mariadb_datadir: /var/lib/mysql
+```
+
+### mysql_pid_file
+
+Path to MariaDB PID file. Default value depends on your operating system.
+
+### mysql_socket
+
+Path to MariaDB unix socket. Default value depends on your operating system.
+
+### mariadb_log_file_group
+
+Default value depends on your operating system.
+
+#### Example usage
+
+```YAML
+mariadb_log_file_group: adm
+```
+
+### mariadb_log_error
+
+Default value depends on your operating system.
+
+#### Example usage
+
+```YAML
+mariadb_log_error: /var/log/mysql/error.log
 ```
 
 ## Dependencies
