@@ -53,12 +53,12 @@ mariadb_sql_mode: []
 # @var mysql_pid_file:description: >
 # Path to MariaDB PID file. Default value depends on your operating system.
 # @end
-# mysql_pid_file:example: $ "/var/run/mysqld/mysqld.pid"
+# @var mysql_pid_file:example: $ "/var/run/mysqld/mysqld.pid"
 
 # @var mysql_socket:description: >
 # Path to MariaDB unix socket. Default value depends on your operating system.
 # @end
-# mysql_socket:example: $ "/var/run/mysqld/mysqld.sock"
+# @var mysql_socket:example: $ "/var/run/mysqld/mysqld.sock"
 
 mariadb_key_buffer_size: "256M"
 mariadb_max_allowed_packet: "64M"
