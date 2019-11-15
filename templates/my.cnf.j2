@@ -7,20 +7,20 @@ socket = {{ mariadb_socket }}
 
 [mysqld]
 port = {{ mariadb_port }}
-bind-address = {{ mariadb_bind_address }}
+bind_address = {{ mariadb_bind_address }}
 datadir = {{ mariadb_datadir }}
 socket = {{ mariadb_socket }}
-pid-file = {{ mariadb_pid_file }}
+pid_file = {{ mariadb_pid_file }}
 {% if mariadb_skip_name_resolve %}
-skip-name-resolve
+skip_name_resolve
 {% endif %}
 {% if mariadb_sql_mode %}
-sql_mode = {{ mariadb_sql_mode }}
+sql_mode = {{ mariadb_sql_mode | join(",") }}
 {% endif %}
-transaction-isolation = {{ mariadb_transaction_isolation_level }}
+transaction_isolation = {{ mariadb_transaction_isolation_level }}
 
 # Logging configuration.
-log-error = {{ mariadb_log_error }}
+log_error = {{ mariadb_log_error }}
 
 # Memory settings.
 key_buffer_size = {{ mariadb_key_buffer_size }}
@@ -46,6 +46,7 @@ lower_case_table_names = {{ mariadb_lower_case_table_names }}
 event_scheduler = {{ mariadb_event_scheduler_state }}
 
 # InnoDB settings.
+default_storage_engine = InnoDB
 innodb_file_per_table = {{ mariadb_innodb_file_per_table }}
 innodb_buffer_pool_size = {{ mariadb_innodb_buffer_pool_size }}
 innodb_log_file_size = {{ mariadb_innodb_log_file_size }}
@@ -71,7 +72,7 @@ quick
 max_allowed_packet = {{ mariadb_mysqldump_max_allowed_packet }}
 
 [mysqld_safe]
-pid-file = {{ mariadb_pid_file }}
+pid_file = {{ mariadb_pid_file }}
 
 {% if mariadb_config_include_files | length %}
 # * IMPORTANT: Additional settings that can override those from this file!

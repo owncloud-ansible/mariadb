@@ -2,38 +2,63 @@
 mariadb_root_password: root
 mariadb_enabled_on_startup: True
 
+# @var overwrite_global_mycnf:description: >
 # Whether my.cnf should be updated on every run.
+# @end
 overwrite_global_mycnf: True
 
-# The following variables have a default value depending on operating system.
-# mariadb_config_file: /etc/mysql/mariadb.cnf
-# mariadb_config_include_dir: 
+# @var mariadb_config_include_dir:description: >
+# Path to MariaDB global config file. The default value
+# depends on the operatig system.
+# @end
+# @var mariadb_config_file:example: $ "/etc/mysql/mariadb.cnf"
 
-# READ-UNCOMMITTED, READ-COMMITTED, REPEATABLE-READ, SERIALIZABLE
+# @var mariadb_config_include_dir:description: >
+# Include dir for custom MariaDB config files. The default value
+# depends on the operatig system.
+# @end
+# @var mariadb_config_include_dir:example: $ "/etc/mysql/conf.d"
+
+# @var mariadb_transaction_isolation_level:description: >
+# Set transaction isolation level.
+# Possible values: `READ-UNCOMMITTED|READ-COMMITTED|REPEATABLE-READ|SERIALIZABLE`
+# @en
 mariadb_transaction_isolation_level: READ-COMMITTED
 
-# Pass in a comma-separated list of repos to use (e.g. "remi,epel"). Used only
-# for RedHat systems (and derivatives).
+# @var mariadb_packages:description: >
+# Define a custom list of packages to install. Default value depends on your operating system.
+# @end
+# @var mariadb_packages:example: $ ["mariadb", "mariadb-server", "MySQL-python"]
 
-# Define a custom list of packages to install; if none provided, the default
-# package list from vars/[OS-family].yml will be used.
-# mariadb_packages:
-#   - mariadb
-#   - mariadb-server
-#   - MySQL-python
-
+# @var mariadb_packages_extra:description: >
+# List of extra packages to install e.g. a set of custom dependencies.
+# @end
 mariadb_packages_extra: []
 
-# MariaDB connection settings.
 mariadb_port: "3306"
 mariadb_bind_address: "127.0.0.0"
 mariadb_skip_name_resolve: False
-# Default value depends on operating system.
-# mariadb_datadir: /var/lib/mysql
-mariadb_sql_mode: ""
-# The following variables have a default value depending on operating system.
-# mysql_pid_file: /var/run/mysqld/mysqld.pid
-# mysql_socket: /var/run/mysqld/mysqld.sock
+
+# @var mariadb_datadir:description: >
+# MariaDB data directory to use. Default value depends on your operating system.
+# @end
+# @var mariadb_datadir:example: $ "/var/lib/mysql"
+
+# @var mariadb_sql_mode:description: >
+# MariaDB supports several different modes. You can pass a list of options 
+# to to suit your needs.
+# @end
+mariadb_sql_mode: []
+
+# @var mysql_pid_file:description: >
+# Path to MariaDB PID file. Default value depends on your operating system.
+# @end
+# mysql_pid_file:example: $ "/var/run/mysqld/mysqld.pid"
+
+# @var mysql_socket:description: >
+# Path to MariaDB unix socket. Default value depends on your operating system.
+# @end
+# mysql_socket:example: $ "/var/run/mysqld/mysqld.sock"
 
 mariadb_key_buffer_size: "256M"
 mariadb_max_allowed_packet: "64M"
@@ -56,10 +81,8 @@ mariadb_lower_case_table_names: "0"
 mariadb_wait_timeout: "28800"
 mariadb_event_scheduler_state: "OFF"
 
-mariadb_innodb_file_per_table: "1"
-# Set .._buffer_pool_size up to 80% of RAM but beware of setting too high.
+mariadb_innodb_file_per_table: "ON"
 mariadb_innodb_buffer_pool_size: "256M"
-# Set .._log_file_size to 25% of buffer pool size.
 mariadb_innodb_log_file_size: "128M"
 mariadb_innodb_log_buffer_size: "8M"
 mariadb_innodb_flush_method: "O_DIRECT"
@@ -73,17 +96,28 @@ mariadb_innodb_io_capacity: 200
 mariadb_sync_binlog: 1
 mariadb_mysqldump_max_allowed_packet: "64M"
 
-# mariadb_log_file_group: adm
-# mariadb_log_error: /var/log/mysql/error.log
+# @var mariadb_log_file_group:description: >
+# Default value depends on your operating system.
+# @end
+# @var mariadb_log_file_group:example: $ "adm"
+
+# @var mariadb_log_error:description: >
+# Default value depends on your operating system.
+# @end
+# @var mariadb_log_error:example: $ "/var/log/mysql/error.log"
 
 mariadb_config_include_files: []
-#  - src: path/relative/to/playbook/file.cnf
-#  - { src: path/relative/to/playbook/anotherfile.cnf, force: yes }
+# @var mariadb_config_include_files:example: >
+# mariadb_config_include_files:
+#   - src: path/relative/to/playbook/file.cnf
+#   - src: path/relative/to/playbook/anotherfile.cnf
+#     force: yes
+# @var
 
 mariadb_databases:
   - name: owncloud
-    collation: utf8_general_ci
-    encoding: utf8
+    collation: utf8mb4_bin
+    encoding: utf8mb4
 
 mariadb_users:
   - name: owncloud
