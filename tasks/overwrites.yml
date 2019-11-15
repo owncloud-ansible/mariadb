@@ -1,0 +1,50 @@
+---
+- name: Define mariadb_packages
+  set_fact:
+    mariadb_packages: "{{ __mariadb_packages | list }}"
+  when: mariadb_packages is not defined
+
+- name: Define mariadb_daemon
+  set_fact:
+    mariadb_daemon: "{{ __mariadb_daemon }}"
+  when: mariadb_daemon is not defined
+
+- name: Define mariadb_mysql_binary
+  set_fact:
+    mariadb_mysql_binary: "{{ __mariadb_mysql_binary }}"
+  when: mariadb_mysql_binary is not defined
+
+- name: Define mariadb_datadir
+  set_fact:
+    mariadb_datadir: "{{ __mariadb_datadir }}"
+  when: mariadb_datadir is not defined
+
+- name: Define mariadb_log_file_group
+  set_fact:
+    mariadb_log_file_group: "{{ __mariadb_log_file_group }}"
+  when: mariadb_log_file_group is not defined
+
+- name: Define mariadb_log_error
+  set_fact:
+    mariadb_log_error: "{{ __mariadb_log_error }}"
+  when: mariadb_log_error is not defined
+
+- name: Define mariadb_pid_file
+  set_fact:
+    mariadb_pid_file: "{{ __mariadb_pid_file }}"
+  when: mariadb_pid_file is not defined
+
+- name: Define mariadb_config_file
+  set_fact:
+    mariadb_config_file: "{{ __mariadb_config_file }}"
+  when: mariadb_config_file is not defined
+
+- name: Define mariadb_config_include_dir
+  set_fact:
+    mariadb_config_include_dir: "{{ __mariadb_config_include_dir }}"
+  when: mariadb_config_include_dir is not defined
+
+- name: Define mariadb_socket
+  set_fact:
+    mariadb_socket: "{{ __mariadb_socket }}"
+  when: mariadb_socket is not defined

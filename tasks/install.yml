@@ -1,0 +1,19 @@
+---
+- name: Ensure dependencies are installed
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ mariadb_packages_extra + __mariadb_requirements }}"
+
+- name: Ensure MariaDB packages are installed
+  package:
+    name: "{{ item }}"
+    state: present
+  register: __mariadb_install
+  loop: "{{ mariadb_packages }}"
+
+- name: Ensure MariaDB is stopped after install
+  service:
+    name: "{{ mariadb_daemon }}"
+    state: "stopped"
+  when: __mariadb_install.changed

@@ -1,0 +1,13 @@
+---
+- name: Ensure MariaDB users are present
+  mysql_user:
+    name: "{{ item.name }}"
+    host: "{{ item.host | default('localhost') }}"
+    password: "{{ item.password }}"
+    priv: "{{ item.priv | default('*.*:USAGE') }}"
+    append_privs: "{{ item.append_privs | default('no') }}"
+    encrypted: "{{ item.encrypted | default('no') }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ mariadb_users }}"
+  loop_control:
+    label: "{{ item.name }}"

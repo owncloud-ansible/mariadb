@@ -1,0 +1,81 @@
+#jinja2: lstrip_blocks: True
+{{ ansible_managed | comment }}
+
+[client]
+port = {{ mariadb_port }}
+socket = {{ mariadb_socket }}
+
+[mysqld]
+port = {{ mariadb_port }}
+bind-address = {{ mariadb_bind_address }}
+datadir = {{ mariadb_datadir }}
+socket = {{ mariadb_socket }}
+pid-file = {{ mariadb_pid_file }}
+{% if mariadb_skip_name_resolve %}
+skip-name-resolve
+{% endif %}
+{% if mariadb_sql_mode %}
+sql_mode = {{ mariadb_sql_mode }}
+{% endif %}
+transaction-isolation = {{ mariadb_transaction_isolation_level }}
+
+# Logging configuration.
+log-error = {{ mariadb_log_error }}
+
+# Memory settings.
+key_buffer_size = {{ mariadb_key_buffer_size }}
+max_allowed_packet = {{ mariadb_max_allowed_packet }}
+table_open_cache = {{ mariadb_table_open_cache }}
+sort_buffer_size = {{ mariadb_sort_buffer_size }}
+read_buffer_size = {{ mariadb_read_buffer_size }}
+read_rnd_buffer_size = {{ mariadb_read_rnd_buffer_size }}
+myisam_sort_buffer_size = {{ mariadb_myisam_sort_buffer_size }}
+thread_cache_size = {{ mariadb_thread_cache_size }}
+query_cache_type = {{ mariadb_query_cache_type }}
+query_cache_size = {{ mariadb_query_cache_size }}
+query_cache_limit = {{ mariadb_query_cache_limit }}
+max_connections = {{ mariadb_max_connections }}
+tmp_table_size = {{ mariadb_tmp_table_size }}
+max_heap_table_size = {{ mariadb_max_heap_table_size }}
+group_concat_max_len = {{ mariadb_group_concat_max_len }}
+join_buffer_size = {{ mariadb_join_buffer_size }}
+
+# Other settings.
+wait_timeout = {{ mariadb_wait_timeout }}
+lower_case_table_names = {{ mariadb_lower_case_table_names }}
+event_scheduler = {{ mariadb_event_scheduler_state }}
+
+# InnoDB settings.
+innodb_file_per_table = {{ mariadb_innodb_file_per_table }}
+innodb_buffer_pool_size = {{ mariadb_innodb_buffer_pool_size }}
+innodb_log_file_size = {{ mariadb_innodb_log_file_size }}
+innodb_log_buffer_size = {{ mariadb_innodb_log_buffer_size }}
+{% if mariadb_innodb_flush_method is defined %}
+innodb_flush_method = {{ mariadb_innodb_flush_method }}
+{% endif %}
+innodb_flush_log_at_trx_commit = {{ mariadb_innodb_flush_log_at_trx_commit }}
+innodb_lock_wait_timeout = {{ mariadb_innodb_lock_wait_timeout }}
+innodb_read_io_threads = {{ mariadb_innodb_read_io_threads }}
+innodb_write_io_threads = {{ mariadb_innodb_write_io_threads }}
+innodb_io_capacity = {{ mariadb_innodb_io_capacity }}
+{% if mariadb_innodb_thread_concurrency is defined %}
+innodb_thread_concurrency = {{ mariadb_innodb_thread_concurrency }}
+{% endif %}
+
+{% if mariadb_sync_binlog is defined %}
+sync_binlog = {{ mariadb_sync_binlog }}
+{% endif %}
+
+[mysqldump]
+quick
+max_allowed_packet = {{ mariadb_mysqldump_max_allowed_packet }}
+
+[mysqld_safe]
+pid-file = {{ mariadb_pid_file }}
+
+{% if mariadb_config_include_files | length %}
+# * IMPORTANT: Additional settings that can override those from this file!
+#   The files must end with '.cnf', otherwise they'll be ignored.
+#
+!includedir {{ mariadb_config_include_dir }}
+{% endif %}

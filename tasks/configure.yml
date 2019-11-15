@@ -1,0 +1,66 @@
+---
+- name: Get MariaDB version
+  command: "{{ mariadb_mysql_binary }} --version"
+  register: __mariadb_cli_version
+  changed_when: False
+  check_mode: False
+
+- name: Copy my.cnf global MariaDB configuration
+  template:
+    src: my.cnf.j2
+    dest: "{{ mariadb_config_file }}"
+    owner: root
+    group: root
+    mode: 0644
+    force: "{{ overwrite_global_mycnf }}"
+  notify: __restart_mariadb
+
+- name: Verify mariadb include directory exists
+  file:
+    path: "{{ mariadb_config_include_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+    setype: mysqld_etc_t 
+  when: mariadb_config_include_files | length
+
+- name: Copy my.cnf override files into include directory
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ mariadb_config_include_dir }}/{{ item.src | basename }}"
+    owner: root
+    group: root
+    mode: 0644
+    force: "{{ item.force | default(False) }}"
+  loop: "{{ mariadb_config_include_files }}"
+  loop_control:
+    label: "{{ mariadb_config_include_dir }}/{{ item.src | basename }}"
+  notify: __restart_mariadb
+
+- name: Create datadir if it does not exist
+  file:
+    path: "{{ mariadb_datadir }}"
+    state: directory
+    owner: mysql 
+    group: mysql
+    mode: 0755
+    setype: mysqld_db_t
+
+- name: Create error log file
+  file:
+    path: "{{ mariadb_log_error }}"
+    state: touch
+    modification_time: preserve
+    access_time: preserve
+    owner: mysql
+    group: "{{ mariadb_log_file_group }}"
+    mode: 0640
+    setype: mysqld_log_t
+  when: mariadb_log_error is defined
+
+- name: Ensure MariaDB is up and running
+  service:
+    name: "{{ mariadb_daemon }}"
+    state: started
+    enabled: "{{ mariadb_enabled_on_startup }}"

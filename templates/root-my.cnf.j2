@@ -1,0 +1,6 @@
+#jinja2: lstrip_blocks: True
+{{ ansible_managed | comment }}
+
+[client]
+user="root"
+password="{{ mariadb_root_password }}"

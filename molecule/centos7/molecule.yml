@@ -1,0 +1,21 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: hetznercloud
+lint:
+  name: yamllint
+  enabled: False
+platforms:
+  - name: centos-7-mariadb
+    server_type: cx11
+    image: centos-7
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+    enabled: False
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

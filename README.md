@@ -1,2 +1,3 @@
-# mysql
-Ansible role for MySQL
+# mariadb
+
+Ansible role for MariaDB
