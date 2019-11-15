@@ -48,3 +48,5 @@
   set_fact:
     mariadb_socket: "{{ __mariadb_socket }}"
   when: mariadb_socket is not defined
+
+...

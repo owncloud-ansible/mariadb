@@ -64,3 +64,5 @@
     name: "{{ mariadb_daemon }}"
     state: started
     enabled: "{{ mariadb_enabled_on_startup }}"
+
+...

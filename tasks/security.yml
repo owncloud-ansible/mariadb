@@ -53,3 +53,5 @@
   mysql_db:
     name: "test"
     state: "absent"
+
+...

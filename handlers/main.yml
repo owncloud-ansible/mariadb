@@ -4,3 +4,5 @@
     name: "{{ mariadb_daemon }}"
     state: restarted
   listen: __restart_mariadb
+
+...

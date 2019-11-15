@@ -8,3 +8,5 @@
   loop: "{{ mariadb_databases }}"
   loop_control:
     label: "{{ item.name }}"
+
+...

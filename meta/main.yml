@@ -1,1 +1,23 @@
 # Standards: 0.1
+---
+galaxy_info:
+  author: Robert Kaussow
+  description: Ansible role to setup MariaDB server
+  license: Apache-2.0
+  min_ansible_version: 2.8
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+    - name: EL
+      versions:
+        - 7
+  galaxy_tags:
+    - owncloud
+    - mariadb
+    - mysql
+
+dependencies: []
+
+...
+
