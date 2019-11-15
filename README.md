@@ -482,9 +482,21 @@ mariadb_datadir: /var/lib/mysql
 
 Path to MariaDB PID file. Default value depends on your operating system.
 
+#### Example usage
+
+```YAML
+mysql_pid_file: /var/run/mysqld/mysqld.pid
+```
+
 ### mysql_socket
 
 Path to MariaDB unix socket. Default value depends on your operating system.
+
+#### Example usage
+
+```YAML
+mysql_socket: /var/run/mysqld/mysqld.sock
+```
 
 ### mariadb_log_file_group
 
