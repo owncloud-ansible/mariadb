@@ -39,8 +39,10 @@ Ansible role to setup MariaDB server
   * [mariadb_max_heap_table_size](#mariadb_max_heap_table_size)
   * [mariadb_myisam_sort_buffer_size](#mariadb_myisam_sort_buffer_size)
   * [mariadb_mysqldump_max_allowed_packet](#mariadb_mysqldump_max_allowed_packet)
+  * [mariadb_overwrite_global_mycnf](#mariadb_overwrite_global_mycnf)
   * [mariadb_packages](#mariadb_packages)
   * [mariadb_packages_extra](#mariadb_packages_extra)
+  * [mariadb_pid_file](#mariadb_pid_file)
   * [mariadb_port](#mariadb_port)
   * [mariadb_query_cache_limit](#mariadb_query_cache_limit)
   * [mariadb_query_cache_size](#mariadb_query_cache_size)
@@ -49,6 +51,7 @@ Ansible role to setup MariaDB server
   * [mariadb_read_rnd_buffer_size](#mariadb_read_rnd_buffer_size)
   * [mariadb_root_password](#mariadb_root_password)
   * [mariadb_skip_name_resolve](#mariadb_skip_name_resolve)
+  * [mariadb_socket](#mariadb_socket)
   * [mariadb_sort_buffer_size](#mariadb_sort_buffer_size)
   * [mariadb_sql_mode](#mariadb_sql_mode)
   * [mariadb_sync_binlog](#mariadb_sync_binlog)
@@ -58,9 +61,6 @@ Ansible role to setup MariaDB server
   * [mariadb_transaction_isolation_level](#mariadb_transaction_isolation_level)
   * [mariadb_users](#mariadb_users)
   * [mariadb_wait_timeout](#mariadb_wait_timeout)
-  * [mysql_pid_file](#mysql_pid_file)
-  * [mysql_socket](#mysql_socket)
-  * [overwrite_global_mycnf](#overwrite_global_mycnf)
 * [Dependencies](#dependencies)
 * [License](#license)
 * [Author](#author)
@@ -321,6 +321,16 @@ mariadb_myisam_sort_buffer_size: 64M
 mariadb_mysqldump_max_allowed_packet: 64M
 ```
 
+### mariadb_overwrite_global_mycnf
+
+Whether my.cnf should be updated on every run.
+
+#### Default value
+
+```YAML
+mariadb_overwrite_global_mycnf: true
+```
+
 ### mariadb_packages
 
 Define a custom list of packages to install. Default value depends on your operating system.
@@ -342,6 +352,16 @@ List of extra packages to install e.g. a set of custom dependencies.
 
 ```YAML
 mariadb_packages_extra: []
+```
+
+### mariadb_pid_file
+
+Path to MariaDB PID file. Default value depends on your operating system.
+
+#### Example usage
+
+```YAML
+mariadb_pid_file: /var/run/mysqld/mysqld.pid
 ```
 
 ### mariadb_port
@@ -408,6 +428,16 @@ mariadb_root_password: root
 
 ```YAML
 mariadb_skip_name_resolve: false
+```
+
+### mariadb_socket
+
+Path to MariaDB unix socket. Default value depends on your operating system.
+
+#### Example usage
+
+```YAML
+mariadb_socket: /var/run/mysqld/mysqld.sock
 ```
 
 ### mariadb_sort_buffer_size
@@ -488,36 +518,6 @@ mariadb_users:
 
 ```YAML
 mariadb_wait_timeout: '28800'
-```
-
-### mysql_pid_file
-
-Path to MariaDB PID file. Default value depends on your operating system.
-
-#### Example usage
-
-```YAML
-mysql_pid_file: /var/run/mysqld/mysqld.pid
-```
-
-### mysql_socket
-
-Path to MariaDB unix socket. Default value depends on your operating system.
-
-#### Example usage
-
-```YAML
-mysql_socket: /var/run/mysqld/mysqld.sock
-```
-
-### overwrite_global_mycnf
-
-Whether my.cnf should be updated on every run.
-
-#### Default value
-
-```YAML
-overwrite_global_mycnf: true
 ```
 
 ## Dependencies
