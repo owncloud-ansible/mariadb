@@ -12,7 +12,7 @@
     owner: root
     group: root
     mode: 0644
-    force: "{{ overwrite_global_mycnf }}"
+    force: "{{ mariadb_overwrite_global_mycnf }}"
   notify: __restart_mariadb
 
 - name: Verify mariadb include directory exists
