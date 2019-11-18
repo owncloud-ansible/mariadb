@@ -1,4 +1,8 @@
 ---
+# @var mariadb_root_password:description: >
+# Password for the default MariaDB root user. For security reasons
+# you should change it to some secure in production use!
+# @end
 mariadb_root_password: root
 mariadb_enabled_on_startup: True
 
