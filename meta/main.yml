@@ -1,6 +1,7 @@
 # Standards: 0.1
 ---
 galaxy_info:
+  # @meta name:value: mariadb
   author: Robert Kaussow
   description: Ansible role to setup MariaDB server
   license: Apache-2.0
