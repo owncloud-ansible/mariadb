@@ -2,7 +2,10 @@
 title: mariadb
 type: docs
 ---
-Ansible role to setup MariaDB server
+
+> **WARNING**: This Ansible role is currently in beta state. Use it at your own risk. 
+
+Role to setup MariaDB server.
 
 * [Default Variables](#default-variables)
   * [mariadb_bind_address](#mariadb-bind-address)
@@ -100,9 +103,9 @@ mariadb_config_include_files: []
 
 ```YAML
 mariadb_config_include_files:
-  - src: path/relative/to/playbook/file.cnf
-  - src: path/relative/to/playbook/anotherfile.cnf
-    force: yes
+- src: path/relative/to/playbook/file.cnf
+- src: path/relative/to/playbook/anotherfile.cnf
+force: yes
 ```
 
 ### mariadb_databases
