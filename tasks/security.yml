@@ -56,6 +56,5 @@
   mysql_db:
     name: "test"
     state: "absent"
-    login_unix_socket: /var/run/mysqld/mysqld.sock
 
 ...
