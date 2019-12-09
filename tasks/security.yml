@@ -14,6 +14,7 @@
     name: "root"
     host: "{{ item }}"
     state: absent
+    login_unix_socket: /var/run/mysqld/mysqld.sock
   when: item not in ['localhost', '127.0.0.1', '::1']
   loop: "{{ mariadb_root_hosts.stdout_lines | default([]) }}"
 
@@ -23,6 +24,7 @@
     host: "{{ item }}"
     password: "{{ mariadb_root_password }}"
     state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock
   register: __mariadb_rootpw_update
   when: item in ['localhost', '127.0.0.1', '::1']
   loop: "{{ mariadb_root_hosts.stdout_lines | default([]) }}"
@@ -34,7 +36,7 @@
     owner: root
     group: root
     mode: 0600
-  when: __mariadb_rootpw_update.changed 
+  when: __mariadb_rootpw_update.changed
 
 - name: Get list of hosts for the anonymous user
   command: "{{ mariadb_mysql_binary }} -NBe \"SELECT Host FROM mysql.user WHERE User = ''\""
@@ -47,11 +49,13 @@
     name: ""
     host: "{{ item }}"
     state: absent
+    login_unix_socket: /var/run/mysqld/mysqld.sock
   loop: "{{ mariadb_anonymous_hosts.stdout_lines | default([]) }}"
 
 - name: Remove MariaDB test database
   mysql_db:
     name: "test"
     state: "absent"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
 
 ...
