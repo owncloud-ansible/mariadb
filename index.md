@@ -3,11 +3,14 @@ title: mariadb
 type: docs
 ---
 
-> **WARNING**: This Ansible role is currently in beta state. Use it at your own risk. 
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/owncloud-ansible/mariadb) [![Build Status](https://drone.owncloud.com/api/badges/owncloud-ansible/mariadb/status.svg)](https://drone.owncloud.com/owncloud-ansible/mariadb) [![GitHub](https://img.shields.io/github/license/owncloud-ansible/mariadb)](https://github.com/owncloud-ansible/mariadb/blob/master/LICENSE) 
+
+{{< hint warning >}} __Warning__<br/> This Ansible role is currently in beta state. Use it at your own risk. {{< /hint >}} 
 
 Role to setup MariaDB server.
 
 * [Default Variables](#default-variables)
+  * [mariadb_apt_cache_update](#mariadb-apt-cache-update)
   * [mariadb_bind_address](#mariadb-bind-address)
   * [mariadb_config_file](#mariadb-config-file)
   * [mariadb_config_include_dir](#mariadb-config-include-dir)
@@ -65,6 +68,16 @@ Role to setup MariaDB server.
 
 ## Default Variables
 
+### mariadb_apt_cache_update
+
+Automatically update apt cache on package installations. This setting will only applied on apt-based operating systems e.g. Ubuntu.
+
+#### Default value
+
+```YAML
+mariadb_apt_cache_update: false
+```
+
 ### mariadb_bind_address
 
 #### Default value
@@ -103,9 +116,9 @@ mariadb_config_include_files: []
 
 ```YAML
 mariadb_config_include_files:
-- src: path/relative/to/playbook/file.cnf
-- src: path/relative/to/playbook/anotherfile.cnf
-force: yes
+  - src: path/relative/to/playbook/file.cnf
+  - src: path/relative/to/playbook/anotherfile.cnf
+    force: yes
 ```
 
 ### mariadb_databases
