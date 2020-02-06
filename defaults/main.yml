@@ -29,6 +29,12 @@ mariadb_overwrite_global_mycnf: True
 # @en
 mariadb_transaction_isolation_level: READ-COMMITTED
 
+# @var mariadb_apt_cache_update:description: >
+# Automatically update apt cache on package installations.
+# This setting will only applied on apt-based operating systems e.g. Ubuntu.
+# @end
+mariadb_apt_cache_update: False
+
 # @var mariadb_packages:description: >
 # Define a custom list of packages to install. Default value depends on your operating system.
 # @end
@@ -49,7 +55,7 @@ mariadb_skip_name_resolve: False
 # @var mariadb_datadir:example: $ "/var/lib/mysql"
 
 # @var mariadb_sql_mode:description: >
-# MariaDB supports several different modes. You can pass a list of options 
+# MariaDB supports several different modes. You can pass a list of options
 # to to suit your needs.
 # @end
 mariadb_sql_mode: []
