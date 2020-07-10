@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: later
-  image: xoxys/ansible-later:latest
+  image: xoxys/ansible-later
   commands:
   - ansible-later
 
@@ -35,9 +35,8 @@ workspace:
 
 steps:
 - name: molecule
-  image: xoxys/molecule:hcloud-linux-amd64
+  image: xoxys/molecule:3
   commands:
-  - /bin/bash /docker-entrypoint.sh
   - molecule test -s ubuntu1804
   environment:
     HCLOUD_TOKEN:
@@ -71,9 +70,8 @@ workspace:
 
 steps:
 - name: molecule
-  image: xoxys/molecule:hcloud-linux-amd64
+  image: xoxys/molecule:3
   commands:
-  - /bin/bash /docker-entrypoint.sh
   - molecule test -s ubuntu2004
   environment:
     HCLOUD_TOKEN:
@@ -107,9 +105,8 @@ workspace:
 
 steps:
 - name: molecule
-  image: xoxys/molecule:hcloud-linux-amd64
+  image: xoxys/molecule:3
   commands:
-  - /bin/bash /docker-entrypoint.sh
   - molecule test -s centos7
   environment:
     HCLOUD_TOKEN:
@@ -136,7 +133,7 @@ platform:
 
 steps:
 - name: generate
-  image: xoxys/ansible-doctor:latest
+  image: xoxys/ansible-doctor
   environment:
     ANSIBLE_DOCTOR_EXCLUDE_FILES: molecule/
     ANSIBLE_DOCTOR_FORCE_OVERWRITE: true
@@ -145,7 +142,7 @@ steps:
     ANSIBLE_DOCTOR_TEMPLATE: hugo-book
 
 - name: publish
-  image: plugins/gh-pages:latest
+  image: plugins/gh-pages
   settings:
     pages_directory: _docs/
     password:
@@ -215,6 +212,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: d96f5c18736bbcdc5ff0588763f7df54a9e41b33bdf80128fbf0bed2a69a163f
+hmac: af322d52892e6c92a4e5dc1ce90669916a33ff8ee0b591504dffbdf47a65b11a
 
 ...
