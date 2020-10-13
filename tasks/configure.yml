@@ -22,7 +22,7 @@
     owner: root
     group: root
     mode: 0755
-    setype: mysqld_etc_t 
+    setype: mysqld_etc_t
   when: mariadb_config_include_files | length
 
 - name: Copy my.cnf override files into include directory
@@ -42,7 +42,7 @@
   file:
     path: "{{ mariadb_datadir }}"
     state: directory
-    owner: mysql 
+    owner: mysql
     group: mysql
     mode: 0755
     setype: mysqld_db_t
@@ -64,5 +64,3 @@
     name: "{{ mariadb_daemon }}"
     state: started
     enabled: "{{ mariadb_enabled_on_startup }}"
-
-...

@@ -1,10 +1,10 @@
 ---
 - name: Get list of hosts for the root user
-  command: "{{ mariadb_mysql_binary }} -NBe
-    \"SELECT Host
+  command: '{{ mariadb_mysql_binary }} -NBe
+    "SELECT Host
     FROM mysql.user
-    WHERE User = 'root'
-    ORDER BY (Host='localhost') ASC\""
+    WHERE User = ''root''
+    ORDER BY (Host=''localhost'') ASC"'
   register: mariadb_root_hosts
   changed_when: False
   check_mode: False
@@ -34,10 +34,10 @@
     owner: root
     group: root
     mode: 0600
-  when: __mariadb_rootpw_update.changed 
+  when: __mariadb_rootpw_update.changed
 
 - name: Get list of hosts for the anonymous user
-  command: "{{ mariadb_mysql_binary }} -NBe \"SELECT Host FROM mysql.user WHERE User = ''\""
+  command: '{{ mariadb_mysql_binary }} -NBe "SELECT Host FROM mysql.user WHERE User = ''''"'
   register: mariadb_anonymous_hosts
   changed_when: False
   check_mode: False
@@ -53,5 +53,3 @@
   mysql_db:
     name: "test"
     state: "absent"
-
-...

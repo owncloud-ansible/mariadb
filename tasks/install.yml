@@ -19,5 +19,3 @@
     name: "{{ mariadb_daemon }}"
     state: "stopped"
   when: __mariadb_install.changed
-
-...
