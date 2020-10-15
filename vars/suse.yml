@@ -1,0 +1,17 @@
+---
+__mariadb_daemon: mariadb
+__mariadb_mysql_binary: /usr/bin/mysql
+
+__mariadb_packages:
+  - mariadb
+
+__mariadb_requirements:
+  - "{{ 'python3-mysqlclient' if ansible_python.version.major == 3 else 'python2-mysqlclient' }}"
+
+__mariadb_datadir: /var/lib/mysql-files
+__mariadb_log_file_group: mysql
+__mariadb_log_error: /var/log/mysql/mysqld.log
+__mariadb_pid_file: /var/lib/mysql/mysqld.pid
+__mariadb_config_file: /etc/my.cnf
+__mariadb_config_include_dir: /etc/my.cnf.d
+__mariadb_socket: /run/mysql/mysql.sock
