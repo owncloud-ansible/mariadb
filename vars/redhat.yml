@@ -1,6 +1,6 @@
 ---
 __mariadb_daemon: rh-mariadb101-mariadb
-__mariadb_mysql_binary: /opt/rh/rh-mariadb101/root/bin/mysql 
+__mariadb_mysql_binary: /opt/rh/rh-mariadb101/root/bin/mysql
 
 __mariadb_packages:
   - rh-mariadb101-mariadb
@@ -16,5 +16,3 @@ __mariadb_pid_file: /var/run/rh-mariadb101-mariadb/mariadb.pid
 __mariadb_config_file: /etc/opt/rh/rh-mariadb101/my.cnf
 __mariadb_config_include_dir: /etc/opt/rh/rh-mariadb101/my.cnf.d
 __mariadb_socket: /var/lib/mysql/mysql.sock
-
-...

@@ -134,5 +134,3 @@ mariadb_users:
     host: localhost
     password: owncloud
     priv: "owncloud.*:ALL"
-
-...
