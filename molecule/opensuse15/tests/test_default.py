@@ -16,7 +16,7 @@ def test_mariadb_running_and_enabled(host):
 def test_mariadb_config(host):
     config = host.run("/usr/bin/mysqladmin variables | tr -d ' '").stdout
 
-    assert "|datadir|/var/lib/mysql-files/|" in config
+    assert "|datadir|/var/lib/mysql/|" in config
     assert "|port|3306|" in config
     assert "|socket|/run/mysql/mysql.sock|" in config
     assert "|pid_file|/var/lib/mysql/mysqld.pid|" in config
