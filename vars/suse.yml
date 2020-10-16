@@ -8,7 +8,6 @@ __mariadb_packages:
 __mariadb_requirements:
   - "{{ 'python3-mysqlclient' if ansible_python.version.major == 3 else 'python2-mysqlclient' }}"
 
-__mariadb_datadir: ""
 __mariadb_log_file_group: mysql
 __mariadb_log_error: /var/log/mysql/mysqld.log
 __mariadb_pid_file: /var/lib/mysql/mysqld.pid
