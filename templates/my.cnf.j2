@@ -8,7 +8,7 @@ socket = {{ mariadb_socket }}
 [mysqld]
 port = {{ mariadb_port }}
 bind_address = {{ mariadb_bind_address }}
-{% if mariadb_datadir %}
+{% if mariadb_datadir is defined %}
 datadir = {{ mariadb_datadir }}
 {% endif %}
 socket = {{ mariadb_socket }}
