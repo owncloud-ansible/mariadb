@@ -46,6 +46,7 @@
     group: mysql
     mode: 0755
     setype: mysqld_db_t
+  when: mariadb_datadir is defined
 
 - name: Create error log file
   file:

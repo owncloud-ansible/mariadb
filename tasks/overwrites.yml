@@ -17,7 +17,9 @@
 - name: Define mariadb_datadir
   set_fact:
     mariadb_datadir: "{{ __mariadb_datadir }}"
-  when: mariadb_datadir is not defined
+  when:
+    - mariadb_datadir is not defined
+    - __mariadb_datadir is defined
 
 - name: Define mariadb_log_file_group
   set_fact:
