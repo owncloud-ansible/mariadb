@@ -65,10 +65,10 @@ innodb_io_capacity = {{ mariadb_innodb_io_capacity }}
 innodb_thread_concurrency = {{ mariadb_innodb_thread_concurrency }}
 {% endif %}
 {% if mariadb_innodb_file_format is defined %}
-innodb_file_format = Barracuda
+innodb_file_format = {{ mariadb_innodb_file_format }}
 {% endif %}
-{% if mariadb_innodb_large_prefix %}
-innodb_large_prefix = 1
+{% if mariadb_innodb_large_prefix is defined %}
+innodb_large_prefix = {{ mariadb_innodb_large_prefix }}
 {% endif %}
 
 {% if mariadb_sync_binlog is defined %}
