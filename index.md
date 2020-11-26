@@ -21,10 +21,12 @@ Role to setup MariaDB server.
   * [mariadb_event_scheduler_state](#mariadb_event_scheduler_state)
   * [mariadb_group_concat_max_len](#mariadb_group_concat_max_len)
   * [mariadb_innodb_buffer_pool_size](#mariadb_innodb_buffer_pool_size)
+  * [mariadb_innodb_file_format](#mariadb_innodb_file_format)
   * [mariadb_innodb_file_per_table](#mariadb_innodb_file_per_table)
   * [mariadb_innodb_flush_log_at_trx_commit](#mariadb_innodb_flush_log_at_trx_commit)
   * [mariadb_innodb_flush_method](#mariadb_innodb_flush_method)
   * [mariadb_innodb_io_capacity](#mariadb_innodb_io_capacity)
+  * [mariadb_innodb_large_prefix](#mariadb_innodb_large_prefix)
   * [mariadb_innodb_lock_wait_timeout](#mariadb_innodb_lock_wait_timeout)
   * [mariadb_innodb_log_buffer_size](#mariadb_innodb_log_buffer_size)
   * [mariadb_innodb_log_file_size](#mariadb_innodb_log_file_size)
@@ -174,6 +176,14 @@ mariadb_group_concat_max_len: '1024'
 mariadb_innodb_buffer_pool_size: 256M
 ```
 
+### mariadb_innodb_file_format
+
+#### Default value
+
+```YAML
+mariadb_innodb_file_format: _unset_
+```
+
 ### mariadb_innodb_file_per_table
 
 #### Default value
@@ -204,6 +214,14 @@ mariadb_innodb_flush_method: O_DIRECT
 
 ```YAML
 mariadb_innodb_io_capacity: 200
+```
+
+### mariadb_innodb_large_prefix
+
+#### Default value
+
+```YAML
+mariadb_innodb_large_prefix: _unset_
 ```
 
 ### mariadb_innodb_lock_wait_timeout
