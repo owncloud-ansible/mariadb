@@ -106,6 +106,9 @@ mariadb_innodb_io_capacity: 200
 mariadb_sync_binlog: 1
 mariadb_mysqldump_max_allowed_packet: "64M"
 
+# @var mariadb_innodb_file_format:value: $ "_unset_"
+# @var mariadb_innodb_large_prefix:value: $ "_unset_"
+
 # @var mariadb_log_file_group:description: >
 # Default value depends on your operating system.
 # @end

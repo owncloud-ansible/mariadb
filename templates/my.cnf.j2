@@ -64,6 +64,12 @@ innodb_io_capacity = {{ mariadb_innodb_io_capacity }}
 {% if mariadb_innodb_thread_concurrency is defined %}
 innodb_thread_concurrency = {{ mariadb_innodb_thread_concurrency }}
 {% endif %}
+{% if mariadb_innodb_file_format is defined %}
+innodb_file_format = {{ mariadb_innodb_file_format }}
+{% endif %}
+{% if mariadb_innodb_large_prefix is defined %}
+innodb_large_prefix = {{ mariadb_innodb_large_prefix }}
+{% endif %}
 
 {% if mariadb_sync_binlog is defined %}
 sync_binlog = {{ mariadb_sync_binlog }}
