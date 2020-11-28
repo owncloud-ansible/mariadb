@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: later
-  image: xoxys/ansible-later
+  image: thegeeklab/ansible-later
   commands:
   - ansible-later
 
@@ -35,7 +35,7 @@ workspace:
 
 steps:
 - name: molecule
-  image: xoxys/molecule:3
+  image: thegeeklab/molecule:3
   commands:
   - molecule test -s ubuntu1804
   environment:
@@ -70,7 +70,7 @@ workspace:
 
 steps:
 - name: molecule
-  image: xoxys/molecule:3
+  image: thegeeklab/molecule:3
   commands:
   - molecule test -s ubuntu2004
   environment:
@@ -105,7 +105,7 @@ workspace:
 
 steps:
 - name: molecule
-  image: xoxys/molecule:3
+  image: thegeeklab/molecule:3
   commands:
   - molecule test -s centos7
   environment:
@@ -140,7 +140,7 @@ workspace:
 
 steps:
 - name: molecule
-  image: xoxys/molecule:3
+  image: thegeeklab/molecule:3
   commands:
   - molecule test -s opensuse15
   environment:
@@ -168,7 +168,7 @@ platform:
 
 steps:
 - name: generate
-  image: xoxys/ansible-doctor
+  image: thegeeklab/ansible-doctor
   environment:
     ANSIBLE_DOCTOR_EXCLUDE_FILES: molecule/
     ANSIBLE_DOCTOR_FORCE_OVERWRITE: true
@@ -249,6 +249,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: f1b5c2ecf714bf72bf1fe45587c560fd5b06564887f8bd026280de9d55e9461c
+hmac: f65fc721d4c51d39ae7675c80b90d286781c8fabd5d591a5e06db96456daa2d3
 
 ...
