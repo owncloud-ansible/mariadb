@@ -1,0 +1,18 @@
+---
+__mariadb_daemon: mariadb
+__mariadb_mysql_binary: /usr/bin/mysql
+
+__mariadb_packages:
+  - mariadb
+  - mariadb-server
+
+__mariadb_requirements:
+  - python3-PyMySQL
+
+__mariadb_datadir: /var/lib/mysql
+__mariadb_log_file_group: mysql
+__mariadb_log_error: /var/log/mariadb/mariadb.log
+__mariadb_pid_file: /run/mariadb/mariadb.pid
+__mariadb_config_file: /etc/my.cnf.d/mariadb-server.cnf
+__mariadb_config_include_dir: /etc/my.cnf.d
+__mariadb_socket: /var/lib/mysql/mysql.sock
