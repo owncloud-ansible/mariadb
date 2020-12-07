@@ -22,6 +22,7 @@
     name: "root"
     host: "{{ item }}"
     password: "{{ mariadb_root_password }}"
+    login_unix_socket: "{{ mariadb_socket }}"
     state: present
   register: __mariadb_rootpw_update
   when: item in ['localhost', '127.0.0.1', '::1']
