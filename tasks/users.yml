@@ -8,6 +8,7 @@
     append_privs: "{{ item.append_privs | default('no') }}"
     encrypted: "{{ item.encrypted | default('no') }}"
     state: "{{ item.state | default('present') }}"
+    login_unix_socket: "{{ mariadb_socket }}"
   loop: "{{ mariadb_users }}"
   loop_control:
     label: "{{ item.name }}"
