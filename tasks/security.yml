@@ -10,9 +10,13 @@
   check_mode: False
 
 - name: Disallow root login remotely
-  command: 'mysql -NBe "{{ item }}"'
-  with_items:
-    - DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')
+  mysql_user:
+    name: "root"
+    host: "{{ item }}"
+    state: absent
+    login_unix_socket: "{{ mariadb_socket }}"
+  when: item not in ['localhost', '127.0.0.1', '::1']
+  loop: "{{ mariadb_root_hosts.stdout_lines | default([]) }}"
   changed_when: False
 
 - name: Update MariaDB root password
