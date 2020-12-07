@@ -5,6 +5,7 @@
     collation: "{{ item.collation | default('utf8_general_ci') }}"
     encoding: "{{ item.encoding | default('utf8') }}"
     state: "{{ item.state | default('present') }}"
+    login_unix_socket: "{{ mariadb_socket }}"
   loop: "{{ mariadb_databases }}"
   loop_control:
     label: "{{ item.name }}"
