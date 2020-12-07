@@ -17,7 +17,6 @@
     login_unix_socket: "{{ mariadb_socket }}"
   when: item not in ['localhost', '127.0.0.1', '::1']
   loop: "{{ mariadb_root_hosts.stdout_lines | default([]) }}"
-  changed_when: False
 
 - name: Update MariaDB root password
   mysql_user:
