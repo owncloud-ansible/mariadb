@@ -23,7 +23,7 @@
     group: root
     mode: 0755
     setype: mysqld_etc_t
-  when: mariadb_config_include_files | length
+  when: mariadb_config_include_files | length > 0
 
 - name: Copy my.cnf override files into include directory
   template:
