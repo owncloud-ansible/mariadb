@@ -11,11 +11,8 @@
     name: "{{ item }}"
     update_cache: "{{ mariadb_apt_cache_update }}"
     state: present
-  register: __mariadb_install
+  notify: __mariadb_stopped
   loop: "{{ mariadb_packages }}"
 
 - name: Ensure MariaDB is stopped after install
-  service:
-    name: "{{ mariadb_daemon }}"
-    state: "stopped"
-  when: __mariadb_install.changed
+  meta: flush_handlers
