@@ -3,8 +3,7 @@ import os
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']
-).get_hosts('all')
+    os.environ["MOLECULE_INVENTORY_FILE"]).get_hosts("all")
 
 
 def test_mariadb_running_and_enabled(host):
@@ -14,7 +13,9 @@ def test_mariadb_running_and_enabled(host):
 
 
 def test_mariadb_config(host):
-    config = host.run("/opt/rh/rh-mariadb101/root/bin/mysqladmin variables | tr -d ' '").stdout
+    config = host.run(
+        "/opt/rh/rh-mariadb101/root/bin/mysqladmin variables | tr -d ' '"
+    ).stdout
 
     assert "|datadir|/var/opt/rh/rh-mariadb101/lib/mysql/|" in config
     assert "|port|3306|" in config

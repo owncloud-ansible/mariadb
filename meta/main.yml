@@ -1,8 +1,10 @@
-# Standards: 0.1
+# Standards: 0.2
 ---
 galaxy_info:
   # @meta name:value: mariadb
-  author: Robert Kaussow
+  author: "ownCloud DevOps <devops@owncloud.com>"
+  namespace: owncloud
+  role_name: mariadb
   # @meta description:value: >
   # [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/owncloud-ansible/mariadb)
   # [![Build Status](https://drone.owncloud.com/api/badges/owncloud-ansible/mariadb/status.svg)](https://drone.owncloud.com/owncloud-ansible/mariadb)
@@ -17,17 +19,21 @@ galaxy_info:
   # @end
   description: Role to setup MariaDB server
   license: Apache-2.0
-  min_ansible_version: 2.8
+  min_ansible_version: 2.10
   platforms:
     - name: Ubuntu
       versions:
-        - xenial
+        - bionic
+        - focal
     - name: EL
       versions:
         - 7
+        - 8
+     - name: opensuse
+       versions:
+         - 15.2
   galaxy_tags:
     - owncloud
     - mariadb
     - mysql
-
 dependencies: []
