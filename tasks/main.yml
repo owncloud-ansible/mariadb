@@ -7,8 +7,8 @@
         - "{{ ansible_os_family | lower }}.yml"
       paths:
         - "vars"
-    var_files: "{{ lookup('first_found', params, errors='ignore', wantlist=True) }}"
-  when: var_files | length > 0
+    var_files: "{{ lookup('first_found', params, errors='ignore') }}"
+  when: var_files
 
 - include_tasks: overwrites.yml
 
