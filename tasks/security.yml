@@ -25,7 +25,6 @@
     password: "{{ mariadb_root_password }}"
     state: present
     login_unix_socket: "{{ mariadb_socket }}"
-  register: __mariadb_rootpw_update
   when: item in ['localhost', '127.0.0.1', '::1']
   loop: "{{ mariadb_root_hosts.stdout_lines | default([]) }}"
 
@@ -36,7 +35,6 @@
     owner: root
     group: root
     mode: 0600
-  when: __mariadb_rootpw_update.changed
 
 - name: Get list of hosts for the anonymous user
   command: '{{ mariadb_mysql_binary }} -NBe "SELECT Host FROM mysql.user WHERE User = ''''"'

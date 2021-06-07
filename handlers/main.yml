@@ -3,4 +3,10 @@
   service:
     name: "{{ mariadb_daemon }}"
     state: restarted
-  listen: __restart_mariadb
+  listen: __mariadb_restart
+
+- name: Stop MariaDB
+  service:
+    name: "{{ mariadb_daemon }}"
+    state: stopped
+  listen: __mariadb_stopped

@@ -13,7 +13,7 @@
     group: root
     mode: 0644
     force: "{{ mariadb_overwrite_global_mycnf }}"
-  notify: __restart_mariadb
+  notify: __mariadb_restart
 
 - name: Verify mariadb include directory exists
   file:
@@ -36,7 +36,7 @@
   loop: "{{ mariadb_config_include_files }}"
   loop_control:
     label: "{{ mariadb_config_include_dir }}/{{ item.src | basename }}"
-  notify: __restart_mariadb
+  notify: __mariadb_restart
 
 - name: Create datadir if it does not exist
   file:
