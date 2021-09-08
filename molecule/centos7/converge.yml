@@ -2,6 +2,7 @@
 - name: Converge
   hosts: all
   vars:
+    mariadb_environment_isolation: False
     mariadb_packages_extra:
       - centos-release-scl
 

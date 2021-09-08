@@ -6,6 +6,21 @@
 mariadb_root_password: root
 mariadb_enabled_on_startup: True
 
+# @var mariadb_environment_isolation:description: >
+# On RedHat/CentOS 7 based systems Software Collections are used to install a more up to date version of MariaDB. By default
+# Software Collection packages will be installed completely isolated from the default system package environment to
+# avoid conflicts. In order to use the Software Collections packages, users need to do "few things" differently than
+# with normal RPMs. For example, they need to use 'scl enable' call, which changes environment variables like `PATH`
+# or `LD_LIBRARY_PATH`, so that binaries under alternative path are found. Users also need to use different names for
+# systemd services. Or, some scripts might use full paths for the binaries, like /usr/bin/mysql.
+#
+# If only one MariaDB version is installed on this system the isolation can be disabled. `mariadb_environment_isolation`
+# allow users to choose, whether they prefer isolation or usage simplicity.
+#
+# On systems not based on RedHat/CentOS 7 this option has no effect and will be ignored.
+# @end
+# mariadb_environment_isolation: $ True
+
 # @var mariadb_overwrite_global_mycnf:description: >
 # Whether my.cnf should be updated on every run.
 # @end
