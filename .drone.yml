@@ -36,41 +36,6 @@ trigger:
 
 ---
 kind: pipeline
-name: testing-ubuntu1804
-
-platform:
-  os: linux
-  arch: amd64
-
-concurrency:
-  limit: 1
-
-workspace:
-  base: /drone/src
-  path: mariadb
-
-steps:
-- name: molecule
-  image: thegeeklab/molecule:3
-  commands:
-  - molecule test -s ubuntu1804
-  environment:
-    HCLOUD_TOKEN:
-      from_secret: hcloud_token
-    PY_COLORS: 1
-    USER: root
-
-trigger:
-  ref:
-  - refs/heads/master
-  - refs/tags/**
-  - refs/pull/**
-
-depends_on:
-- linting
-
----
-kind: pipeline
 name: testing-ubuntu2004
 
 platform:
@@ -244,7 +209,6 @@ trigger:
   - refs/pull/**
 
 depends_on:
-- testing-ubuntu1804
 - testing-ubuntu2004
 - testing-centos7
 - testing-rocky8
@@ -333,6 +297,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 2b55ad3d7ba5e00ddd6e6ecdfe6e8f8def3b8b5e614a7883790ca8d5dc27c9fb
+hmac: c4ea78e7041232fc4d458311db474bde5ab6ce09e23c6c9773c12734c5b2469e
 
 ...
