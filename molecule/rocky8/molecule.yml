@@ -8,9 +8,9 @@ dependency:
 driver:
   name: delegated
 platforms:
-  - name: ubuntu-18.04-mariadb
+  - name: rocky-8-mariadb
     server_type: cx11
-    image: ubuntu-18.04
+    image: rocky-8
 lint: |
   /usr/local/bin/flake8
 provisioner:

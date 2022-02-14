@@ -1,9 +1,0 @@
----
-- name: Converge
-  hosts: all
-  vars:
-    mariadb_apt_cache_update: True
-    mariadb_root_password: secure
-
-  roles:
-    - role: mariadb
