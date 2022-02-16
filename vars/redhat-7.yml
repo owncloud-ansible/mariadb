@@ -1,18 +1,22 @@
 ---
-__mariadb_daemon: rh-mariadb101-mariadb
-__mariadb_mysql_binary: /opt/rh/rh-mariadb101/root/bin/mysql
+__mariadb_daemon: rh-mariadb103-mariadb
+__mariadb_mysql_binary: /opt/rh/rh-mariadb103/root/bin/mysql
 
-__mariadb_packages:
-  - rh-mariadb101-mariadb
-  - rh-mariadb101-mariadb-server
+__mariadb_packages_base:
+  - rh-mariadb103-mariadb
+  - rh-mariadb103-mariadb-server
+__mariadb_packages_syspaths:
+  - rh-mariadb103-syspaths
+
+__mariadb_packages: "{{ __mariadb_packages_base if mariadb_environment_isolation | default(True) | bool else __mariadb_packages_base + __mariadb_packages_syspaths }}"
 
 __mariadb_requirements:
   - MySQL-python
 
-__mariadb_datadir: /var/opt/rh/rh-mariadb101/lib/mysql/
+__mariadb_datadir: /var/opt/rh/rh-mariadb103/lib/mysql/
 __mariadb_log_file_group: mysql
-__mariadb_log_error: /var/opt/rh/rh-mariadb101/log/mariadb/mariadb.log
-__mariadb_pid_file: /var/run/rh-mariadb101-mariadb/mariadb.pid
-__mariadb_config_file: /etc/opt/rh/rh-mariadb101/my.cnf
-__mariadb_config_include_dir: /etc/opt/rh/rh-mariadb101/my.cnf.d
+__mariadb_log_error: /var/opt/rh/rh-mariadb103/log/mariadb/mariadb.log
+__mariadb_pid_file: /var/run/rh-mariadb103-mariadb/mariadb.pid
+__mariadb_config_file: /etc/opt/rh/rh-mariadb103/my.cnf
+__mariadb_config_include_dir: /etc/opt/rh/rh-mariadb103/my.cnf.d
 __mariadb_socket: /var/lib/mysql/mysql.sock
