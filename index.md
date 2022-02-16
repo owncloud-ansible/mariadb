@@ -18,6 +18,7 @@ Role to setup MariaDB server.
   * [mariadb_databases](#mariadb_databases)
   * [mariadb_datadir](#mariadb_datadir)
   * [mariadb_enabled_on_startup](#mariadb_enabled_on_startup)
+  * [mariadb_environment_isolation](#mariadb_environment_isolation)
   * [mariadb_event_scheduler_state](#mariadb_event_scheduler_state)
   * [mariadb_group_concat_max_len](#mariadb_group_concat_max_len)
   * [mariadb_innodb_buffer_pool_size](#mariadb_innodb_buffer_pool_size)
@@ -151,6 +152,10 @@ mariadb_datadir: /var/lib/mysql
 ```YAML
 mariadb_enabled_on_startup: true
 ```
+
+### mariadb_environment_isolation
+
+On RedHat/CentOS 7 based systems, Software Collections are used to install a more up-to-date version of MariaDB. By default, Software Collection packages will be installed completely isolated from the default system package environment to avoid conflicts. In order to use the Software Collections packages, users need to do "few things" differently than with normal RPMs. For example, they need to use 'scl enable' call, which changes environment variables like `PATH` or `LD_LIBRARY_PATH`, so that binaries under alternative path are found. Users also need to use different names for systemd services. Or, some scripts might use full paths for the binaries, like /usr/bin/mysql. If only one MariaDB version is installed on this system, the isolation can be disabled. `mariadb_environment_isolation` allow users to choose, whether they prefer isolation or usage simplicity. On systems not based on RedHat/CentOS 7 this option has no effect and will be ignored.
 
 ### mariadb_event_scheduler_state
 
