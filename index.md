@@ -3,69 +3,69 @@ title: mariadb
 type: docs
 ---
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/owncloud-ansible/mariadb) [![Build Status](https://drone.owncloud.com/api/badges/owncloud-ansible/mariadb/status.svg)](https://drone.owncloud.com/owncloud-ansible/mariadb) [![GitHub](https://img.shields.io/github/license/owncloud-ansible/mariadb)](https://github.com/owncloud-ansible/mariadb/blob/main/LICENSE) 
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/owncloud-ansible/mariadb) [![Build Status](https://drone.owncloud.com/api/badges/owncloud-ansible/mariadb/status.svg)](https://drone.owncloud.com/owncloud-ansible/mariadb) [![GitHub](https://img.shields.io/github/license/owncloud-ansible/mariadb)](https://github.com/owncloud-ansible/mariadb/blob/main/LICENSE)
 
-{{< hint warning >}} __Important__<br/> We have switched to 'main' as default branch. The 'master' branch is no longer maintained and will be removed after March 31, 2022! {{< /hint >}} 
+{{< hint warning >}} __Important__<br/> We have switched to 'main' as default branch. The 'master' branch is no longer maintained and will be removed after March 31, 2022! {{< /hint >}}
 
 Role to setup MariaDB server.
 
-* [Default Variables](#default-variables)
-  * [mariadb_apt_cache_update](#mariadb_apt_cache_update)
-  * [mariadb_bind_address](#mariadb_bind_address)
-  * [mariadb_config_file](#mariadb_config_file)
-  * [mariadb_config_include_dir](#mariadb_config_include_dir)
-  * [mariadb_config_include_files](#mariadb_config_include_files)
-  * [mariadb_databases](#mariadb_databases)
-  * [mariadb_datadir](#mariadb_datadir)
-  * [mariadb_enabled_on_startup](#mariadb_enabled_on_startup)
-  * [mariadb_environment_isolation](#mariadb_environment_isolation)
-  * [mariadb_event_scheduler_state](#mariadb_event_scheduler_state)
-  * [mariadb_group_concat_max_len](#mariadb_group_concat_max_len)
-  * [mariadb_innodb_buffer_pool_size](#mariadb_innodb_buffer_pool_size)
-  * [mariadb_innodb_file_format](#mariadb_innodb_file_format)
-  * [mariadb_innodb_file_per_table](#mariadb_innodb_file_per_table)
-  * [mariadb_innodb_flush_log_at_trx_commit](#mariadb_innodb_flush_log_at_trx_commit)
-  * [mariadb_innodb_flush_method](#mariadb_innodb_flush_method)
-  * [mariadb_innodb_io_capacity](#mariadb_innodb_io_capacity)
-  * [mariadb_innodb_large_prefix](#mariadb_innodb_large_prefix)
-  * [mariadb_innodb_lock_wait_timeout](#mariadb_innodb_lock_wait_timeout)
-  * [mariadb_innodb_log_buffer_size](#mariadb_innodb_log_buffer_size)
-  * [mariadb_innodb_log_file_size](#mariadb_innodb_log_file_size)
-  * [mariadb_innodb_read_io_threads](#mariadb_innodb_read_io_threads)
-  * [mariadb_innodb_write_io_threads](#mariadb_innodb_write_io_threads)
-  * [mariadb_join_buffer_size](#mariadb_join_buffer_size)
-  * [mariadb_key_buffer_size](#mariadb_key_buffer_size)
-  * [mariadb_log_error](#mariadb_log_error)
-  * [mariadb_log_file_group](#mariadb_log_file_group)
-  * [mariadb_lower_case_table_names](#mariadb_lower_case_table_names)
-  * [mariadb_max_allowed_packet](#mariadb_max_allowed_packet)
-  * [mariadb_max_connections](#mariadb_max_connections)
-  * [mariadb_max_heap_table_size](#mariadb_max_heap_table_size)
-  * [mariadb_myisam_sort_buffer_size](#mariadb_myisam_sort_buffer_size)
-  * [mariadb_mysqldump_max_allowed_packet](#mariadb_mysqldump_max_allowed_packet)
-  * [mariadb_overwrite_global_mycnf](#mariadb_overwrite_global_mycnf)
-  * [mariadb_packages](#mariadb_packages)
-  * [mariadb_packages_extra](#mariadb_packages_extra)
-  * [mariadb_pid_file](#mariadb_pid_file)
-  * [mariadb_port](#mariadb_port)
-  * [mariadb_query_cache_limit](#mariadb_query_cache_limit)
-  * [mariadb_query_cache_size](#mariadb_query_cache_size)
-  * [mariadb_query_cache_type](#mariadb_query_cache_type)
-  * [mariadb_read_buffer_size](#mariadb_read_buffer_size)
-  * [mariadb_read_rnd_buffer_size](#mariadb_read_rnd_buffer_size)
-  * [mariadb_root_password](#mariadb_root_password)
-  * [mariadb_skip_name_resolve](#mariadb_skip_name_resolve)
-  * [mariadb_socket](#mariadb_socket)
-  * [mariadb_sort_buffer_size](#mariadb_sort_buffer_size)
-  * [mariadb_sql_mode](#mariadb_sql_mode)
-  * [mariadb_sync_binlog](#mariadb_sync_binlog)
-  * [mariadb_table_open_cache](#mariadb_table_open_cache)
-  * [mariadb_thread_cache_size](#mariadb_thread_cache_size)
-  * [mariadb_tmp_table_size](#mariadb_tmp_table_size)
-  * [mariadb_transaction_isolation_level](#mariadb_transaction_isolation_level)
-  * [mariadb_users](#mariadb_users)
-  * [mariadb_wait_timeout](#mariadb_wait_timeout)
-* [Dependencies](#dependencies)
+- [Default Variables](#default-variables)
+  - [mariadb_apt_cache_update](#mariadb_apt_cache_update)
+  - [mariadb_bind_address](#mariadb_bind_address)
+  - [mariadb_config_file](#mariadb_config_file)
+  - [mariadb_config_include_dir](#mariadb_config_include_dir)
+  - [mariadb_config_include_files](#mariadb_config_include_files)
+  - [mariadb_databases](#mariadb_databases)
+  - [mariadb_datadir](#mariadb_datadir)
+  - [mariadb_enabled_on_startup](#mariadb_enabled_on_startup)
+  - [mariadb_environment_isolation](#mariadb_environment_isolation)
+  - [mariadb_event_scheduler_state](#mariadb_event_scheduler_state)
+  - [mariadb_group_concat_max_len](#mariadb_group_concat_max_len)
+  - [mariadb_innodb_buffer_pool_size](#mariadb_innodb_buffer_pool_size)
+  - [mariadb_innodb_file_format](#mariadb_innodb_file_format)
+  - [mariadb_innodb_file_per_table](#mariadb_innodb_file_per_table)
+  - [mariadb_innodb_flush_log_at_trx_commit](#mariadb_innodb_flush_log_at_trx_commit)
+  - [mariadb_innodb_flush_method](#mariadb_innodb_flush_method)
+  - [mariadb_innodb_io_capacity](#mariadb_innodb_io_capacity)
+  - [mariadb_innodb_large_prefix](#mariadb_innodb_large_prefix)
+  - [mariadb_innodb_lock_wait_timeout](#mariadb_innodb_lock_wait_timeout)
+  - [mariadb_innodb_log_buffer_size](#mariadb_innodb_log_buffer_size)
+  - [mariadb_innodb_log_file_size](#mariadb_innodb_log_file_size)
+  - [mariadb_innodb_read_io_threads](#mariadb_innodb_read_io_threads)
+  - [mariadb_innodb_write_io_threads](#mariadb_innodb_write_io_threads)
+  - [mariadb_join_buffer_size](#mariadb_join_buffer_size)
+  - [mariadb_key_buffer_size](#mariadb_key_buffer_size)
+  - [mariadb_log_error](#mariadb_log_error)
+  - [mariadb_log_file_group](#mariadb_log_file_group)
+  - [mariadb_lower_case_table_names](#mariadb_lower_case_table_names)
+  - [mariadb_max_allowed_packet](#mariadb_max_allowed_packet)
+  - [mariadb_max_connections](#mariadb_max_connections)
+  - [mariadb_max_heap_table_size](#mariadb_max_heap_table_size)
+  - [mariadb_myisam_sort_buffer_size](#mariadb_myisam_sort_buffer_size)
+  - [mariadb_mysqldump_max_allowed_packet](#mariadb_mysqldump_max_allowed_packet)
+  - [mariadb_overwrite_global_mycnf](#mariadb_overwrite_global_mycnf)
+  - [mariadb_packages](#mariadb_packages)
+  - [mariadb_packages_extra](#mariadb_packages_extra)
+  - [mariadb_pid_file](#mariadb_pid_file)
+  - [mariadb_port](#mariadb_port)
+  - [mariadb_query_cache_limit](#mariadb_query_cache_limit)
+  - [mariadb_query_cache_size](#mariadb_query_cache_size)
+  - [mariadb_query_cache_type](#mariadb_query_cache_type)
+  - [mariadb_read_buffer_size](#mariadb_read_buffer_size)
+  - [mariadb_read_rnd_buffer_size](#mariadb_read_rnd_buffer_size)
+  - [mariadb_root_password](#mariadb_root_password)
+  - [mariadb_skip_name_resolve](#mariadb_skip_name_resolve)
+  - [mariadb_socket](#mariadb_socket)
+  - [mariadb_sort_buffer_size](#mariadb_sort_buffer_size)
+  - [mariadb_sql_mode](#mariadb_sql_mode)
+  - [mariadb_sync_binlog](#mariadb_sync_binlog)
+  - [mariadb_table_open_cache](#mariadb_table_open_cache)
+  - [mariadb_thread_cache_size](#mariadb_thread_cache_size)
+  - [mariadb_tmp_table_size](#mariadb_tmp_table_size)
+  - [mariadb_transaction_isolation_level](#mariadb_transaction_isolation_level)
+  - [mariadb_users](#mariadb_users)
+  - [mariadb_wait_timeout](#mariadb_wait_timeout)
+- [Dependencies](#dependencies)
 
 ---
 
@@ -155,7 +155,11 @@ mariadb_enabled_on_startup: true
 
 ### mariadb_environment_isolation
 
-On RedHat/CentOS 7 based systems, Software Collections are used to install a more up-to-date version of MariaDB. By default, Software Collection packages will be installed completely isolated from the default system package environment to avoid conflicts. In order to use the Software Collections packages, users need to do "few things" differently than with normal RPMs. For example, they need to use 'scl enable' call, which changes environment variables like `PATH` or `LD_LIBRARY_PATH`, so that binaries under alternative path are found. Users also need to use different names for systemd services. Or, some scripts might use full paths for the binaries, like /usr/bin/mysql. If only one MariaDB version is installed on this system, the isolation can be disabled. `mariadb_environment_isolation` allow users to choose, whether they prefer isolation or usage simplicity. On systems not based on RedHat/CentOS 7 this option has no effect and will be ignored.
+On RedHat/CentOS 7 based systems, Software Collections are used to install a more up-to-date version of MariaDB. By default, Software Collection packages will be installed completely isolated from the default system package environment to avoid conflicts. In order to use the Software Collections packages, users need to do "few things" differently than with normal RPMs. For example, they need to use 'scl enable' call, which changes environment variables like `PATH` or `LD_LIBRARY_PATH`, so that binaries under alternative path are found. Users also need to use different names for systemd services. Or, some scripts might use full paths for the binaries, like /usr/bin/mysql.
+
+If only one MariaDB version is installed on this system, the isolation can be disabled. `mariadb_environment_isolation` allow users to choose, whether they prefer isolation or usage simplicity.
+
+On systems not based on RedHat/CentOS 7 this option has no effect and will be ignored.
 
 ### mariadb_event_scheduler_state
 
@@ -551,6 +555,8 @@ mariadb_users:
 ```YAML
 mariadb_wait_timeout: '28800'
 ```
+
+
 
 ## Dependencies
 
