@@ -5,9 +5,9 @@ type: docs
 
 [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/owncloud-ansible/mariadb) [![Build Status](https://drone.owncloud.com/api/badges/owncloud-ansible/mariadb/status.svg)](https://drone.owncloud.com/owncloud-ansible/mariadb) [![GitHub](https://img.shields.io/github/license/owncloud-ansible/mariadb)](https://github.com/owncloud-ansible/mariadb/blob/main/LICENSE)
 
-{{< hint type=warning >}} We have switched to 'main' as default branch. The 'master' branch is no longer maintained and will be removed after March 31, 2022! {{< /hint >}}
-
 Role to setup MariaDB server.
+
+<!--more-->
 
 - [Default Variables](#default-variables)
   - [mariadb_apt_cache_update](#mariadb_apt_cache_update)
