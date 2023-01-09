@@ -154,6 +154,6 @@ mariadb_users:
     priv: "owncloud.*:ALL"
 
 # @var mariadb_server_id:description: >
-# The `server_id`` uniquely identifies the server instance in the community of replication partners, see https://mariadb.com/docs/server/ref/mdb/system-variables/server_id/
+# The `server_id` uniquely identifies the server instance in the community of replication partners, see [documentation](https://mariadb.com/docs/server/ref/mdb/system-variables/server_id/).
 # @end
 # @var mariadb_server_id:value: $ "_unset_"
