@@ -54,6 +54,7 @@ Role to setup MariaDB server.
   - [mariadb_read_buffer_size](#mariadb_read_buffer_size)
   - [mariadb_read_rnd_buffer_size](#mariadb_read_rnd_buffer_size)
   - [mariadb_root_password](#mariadb_root_password)
+  - [mariadb_server_id](#mariadb_server_id)
   - [mariadb_skip_name_resolve](#mariadb_skip_name_resolve)
   - [mariadb_socket](#mariadb_socket)
   - [mariadb_sort_buffer_size](#mariadb_sort_buffer_size)
@@ -456,6 +457,16 @@ Password for the default MariaDB root user. For security reasons you should chan
 
 ```YAML
 mariadb_root_password: root
+```
+
+### mariadb_server_id
+
+The `server_id` uniquely identifies the server instance in the community of replication partners, see [documentation](https://mariadb.com/docs/server/ref/mdb/system-variables/server_id/).
+
+#### Default value
+
+```YAML
+mariadb_server_id: _unset_
 ```
 
 ### mariadb_skip_name_resolve
