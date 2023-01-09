@@ -20,6 +20,9 @@ skip_name_resolve
 sql_mode = {{ mariadb_sql_mode | join(",") }}
 {% endif %}
 transaction_isolation = {{ mariadb_transaction_isolation_level }}
+{% if mariadb_server_id is defined %}
+server_id = {{ mariadb_server_id }}
+{% endif %}
 
 # Logging configuration.
 log_error = {{ mariadb_log_error }}
