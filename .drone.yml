@@ -245,19 +245,6 @@ steps:
       ref:
         - refs/heads/main
 
-  - name: trigger
-    image: plugins/downstream
-    settings:
-      fork: true
-      repositories:
-        - owncloud-ansible/owncloud-ansible.github.io@main
-      server: https://drone.owncloud.com
-      token:
-        from_secret: drone_token
-    when:
-      ref:
-        - refs/heads/main
-
 trigger:
   ref:
     - refs/heads/main
@@ -297,6 +284,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: f7a1d935003939891aa659eec6dc847d733373986f1b02f1c437e44abe1550fd
+hmac: 8f7e83bb14eaf2676d66e53008a16af0ca8561c7a436dd30a3913ec3b4224bc8
 
 ...
